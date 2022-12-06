@@ -1,63 +1,23 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
-	"sort"
-	"strconv"
+
+	"github.com/nakfoury/aoc2022/input"
+	. "github.com/nakfoury/aoc2022/solutions"
 )
 
-func day1(part2 bool) int {
-	inp := getInput(1)
-
-	elves := make(map[int]int)
-	curElf := 0
-	elves[curElf] = 0
-
-	for inp.Scan() {
-		cal, err := strconv.Atoi(inp.Text())
-		if err != nil || cal == 0 {
-			curElf += 1
-			elves[curElf] = 0
-			continue
-		} else {
-			elves[curElf] += cal
-		}
-	}
-
-	maxElf := 0
-	var elfSlice []int
-
-	for _, v := range elves {
-		if v > maxElf {
-			maxElf = v
-		}
-		elfSlice = append(elfSlice, v)
-	}
-
-	if !part2 {
-		return maxElf
-	} else {
-		sort.Slice(elfSlice, func(i int, j int) bool {
-			return elfSlice[i] > elfSlice[j]
-		})
-		return elfSlice[0] + elfSlice[1] + elfSlice[2]
-	}
-
-}
-
-func getInput(day int) *bufio.Scanner {
-	file, err := os.Open(fmt.Sprintf("input/day%d.txt", day))
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return bufio.NewScanner(file)
-}
-
 func main() {
-	fmt.Println("day1 part1:", day1(false))
-	fmt.Println("day1 part2:", day1(true))
+	fmt.Println("day1 part1:", Day1(false))
+	fmt.Println("day1 part2:", Day1(true))
+	fmt.Println("day2 part1:", Day2a(input.GetInput(2)))
+	fmt.Println("day2 part2:", Day2b(input.GetInput(2)))
+	fmt.Println("day3 part1:", Day3a(input.GetInput(3)))
+	fmt.Println("day3 part2:", Day3b(input.GetInput(3)))
+	fmt.Println("day4 part1:", Day4a(input.GetInput(4)))
+	fmt.Println("day4 part2:", Day4b(input.GetInput(4)))
+	fmt.Println("day5 part1:", Day5a(input.GetInput(5)))
+	fmt.Println("day5 part2:", Day5b(input.GetInput(5)))
+	fmt.Println("day6 part1:", Day6a(input.GetInput(6)))
+	fmt.Println("day6 part2:", Day6b(input.GetInput(6)))
 }
