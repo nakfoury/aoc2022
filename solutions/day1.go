@@ -1,15 +1,16 @@
 package solutions
 
 import (
+	"bufio"
 	"sort"
 	"strconv"
-
-	"github.com/nakfoury/aoc2022/input"
 )
 
-func Day1(part2 bool) int {
-	inp := input.GetInput(1)
+func init() {
+	DAY_TO_FUNC[1] = Day1
+}
 
+func Day1(part2 bool, inp *bufio.Scanner) any {
 	elves := make(map[int]int)
 	curElf := 0
 	elves[curElf] = 0

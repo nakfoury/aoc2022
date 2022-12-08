@@ -7,6 +7,10 @@ import (
 	"strings"
 )
 
+func init() {
+	DAY_TO_FUNC[4] = Day4
+}
+
 func parseAssignment(ass string) (int, int) {
 	re := regexp.MustCompile("([0-9]+)-([0-9]+)")
 	m := re.FindStringSubmatch(ass)
@@ -52,4 +56,12 @@ func Day4b(inp *bufio.Scanner) int {
 
 	}
 	return result
+}
+
+func Day4(part2 bool, inp *bufio.Scanner) any {
+	if !part2 {
+		return Day4a(inp)
+	} else {
+		return Day4b(inp)
+	}
 }

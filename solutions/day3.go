@@ -4,6 +4,10 @@ import (
 	"bufio"
 )
 
+func init() {
+	DAY_TO_FUNC[3] = Day3
+}
+
 func byteToPriority(elt byte) int {
 	if elt >= 65 && elt <= 90 {
 		return int(elt - 38)
@@ -73,4 +77,12 @@ func Day3b(inp *bufio.Scanner) int {
 	}
 
 	return result
+}
+
+func Day3(part2 bool, inp *bufio.Scanner) any {
+	if !part2 {
+		return Day3a(inp)
+	} else {
+		return Day3b(inp)
+	}
 }

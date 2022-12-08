@@ -4,6 +4,10 @@ import (
 	"bufio"
 )
 
+func init() {
+	DAY_TO_FUNC[2] = Day2
+}
+
 var RPS = map[byte]int{
 	'A': 1,
 	'B': 2,
@@ -57,4 +61,12 @@ func Day2b(inp *bufio.Scanner) int {
 	}
 
 	return totalScore
+}
+
+func Day2(part2 bool, inp *bufio.Scanner) any {
+	if !part2 {
+		return Day2a(inp)
+	} else {
+		return Day2a(inp)
+	}
 }

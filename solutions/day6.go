@@ -4,6 +4,10 @@ import (
 	"bufio"
 )
 
+func init() {
+	DAY_TO_FUNC[6] = Day6
+}
+
 func isMarker(m []byte, length int) bool {
 	chars := make(map[byte]bool, length)
 	for i := 0; i < len(m); i++ {
@@ -44,4 +48,12 @@ func Day6b(inp *bufio.Scanner) int {
 	}
 
 	return result
+}
+
+func Day6(part2 bool, inp *bufio.Scanner) any {
+	if !part2 {
+		return Day6a(inp)
+	} else {
+		return Day6b(inp)
+	}
 }

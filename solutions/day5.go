@@ -6,6 +6,10 @@ import (
 	"strconv"
 )
 
+func init() {
+	DAY_TO_FUNC[5] = Day5
+}
+
 func loadLine(line string, stacks [][]byte) [][]byte {
 	for i := 1; i < len(line); i += 4 {
 		if line[i] >= 48 && line[i] <= 57 {
@@ -57,7 +61,7 @@ func moveCrate9001(n int, from int, to int, stacks [][]byte) [][]byte {
 	return stacks
 }
 
-func Day5a(inp *bufio.Scanner) string {
+func Day5(part2 bool, inp *bufio.Scanner) any {
 	re := regexp.MustCompile(`move ([0-9]+) from ([0-9]) to ([0-9])`)
 
 	var result []byte
@@ -85,46 +89,11 @@ func Day5a(inp *bufio.Scanner) string {
 			n, _ := strconv.Atoi(m[1])
 			from, _ := strconv.Atoi(m[2])
 			to, _ := strconv.Atoi(m[3])
-			moveCrate(n, from-1, to-1, stacks)
-		}
-	}
-
-	for i, stack := range stacks {
-		result[i] = stack[len(stack)-1]
-	}
-
-	return string(result)
-}
-
-func Day5b(inp *bufio.Scanner) string {
-	re := regexp.MustCompile(`move ([0-9]+) from ([0-9]) to ([0-9])`)
-
-	var result []byte
-	var stacks [][]byte
-
-	loaded := false
-	for inp.Scan() {
-		line := inp.Text()
-
-		if stacks == nil {
-			stacks = make([][]byte, (len(line)+1)/4)
-			result = make([]byte, (len(line)+1)/4)
-		}
-
-		if line == "" {
-			loaded = true
-			stacks = reverseStacks(stacks)
-			continue
-		}
-
-		if !loaded {
-			stacks = loadLine(line, stacks)
-		} else {
-			m := re.FindStringSubmatch(line)
-			n, _ := strconv.Atoi(m[1])
-			from, _ := strconv.Atoi(m[2])
-			to, _ := strconv.Atoi(m[3])
-			moveCrate9001(n, from-1, to-1, stacks)
+			if !part2 {
+				moveCrate(n, from-1, to-1, stacks)
+			} else {
+				moveCrate9001(n, from-1, to-1, stacks)
+			}
 		}
 	}
 

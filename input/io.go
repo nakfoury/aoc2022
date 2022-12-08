@@ -14,9 +14,3 @@ func GetInput(day int) *bufio.Scanner {
 	}
 	return bufio.NewScanner(file)
 }
-
-// func MakeTestInput(inp string) *bufio.Scanner {
-// 	var s scanner.Scanner
-// 	s.Init(strings.NewReader(inp))
-// 	return s
-// }
