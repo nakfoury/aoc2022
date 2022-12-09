@@ -16,25 +16,6 @@ func makeRow(line string) []int {
 	return result
 }
 
-func isVisible(row []int, reverse bool) bool {
-	if !reverse {
-		tree := row[len(row)-1]
-		for i := 0; i < len(row)-1; i++ {
-			if tree < row[i] {
-				return false
-			}
-		}
-	} else {
-		tree := row[0]
-		for i := len(row) - 1; i > 0; i-- {
-			if tree < row[i] {
-				return false
-			}
-		}
-	}
-	return true
-}
-
 func Day8(part2 bool, inp *bufio.Scanner) any {
 	result := 0
 

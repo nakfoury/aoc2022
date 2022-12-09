@@ -17,8 +17,8 @@ func init() {
 }
 
 type File interface {
-	getSize() int
 	isDir() bool
+	getSize() int
 	getParent() File
 }
 
